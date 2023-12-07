@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'dotnet build eShopOnWeb-sln'
+        sh 'dotnet build eShopOnWeb.sln'
       }
     }
 
@@ -35,7 +35,7 @@ pipeline {
 
     stage('Deployment') {
       steps {
-        sh 'dotnet publish eShopOnWeb-sln -o /var/aspnet'
+        sh 'dotnet publish eShopOnWeb.sln -o /var/aspnet'
         dir(path: '/var/aspnet') {
           archiveArtifacts(artifacts: '*', onlyIfSuccessful: true)
         }
